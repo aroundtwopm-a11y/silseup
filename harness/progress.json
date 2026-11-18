@@ -2,52 +2,62 @@
     "S1":  {
                "2-spec":  "done",
                "approved":  true,
-               "4-implement":  "done"
+               "4-implement":  "done",
+               "5-verify":  "done"
            },
     "S2":  {
                "2-spec":  "done",
                "approved":  true,
-               "4-implement":  "done"
+               "4-implement":  "done",
+               "5-verify":  "done"
            },
     "S3":  {
                "2-spec":  "done",
                "approved":  true,
-               "4-implement":  "done"
+               "4-implement":  "done",
+               "5-verify":  "done"
            },
     "S4":  {
                "2-spec":  "done",
                "approved":  true,
-               "4-implement":  "done"
+               "4-implement":  "done",
+               "5-verify":  "done"
            },
     "S5":  {
                "2-spec":  "done",
                "approved":  true,
-               "4-implement":  "done"
+               "4-implement":  "done",
+               "5-verify":  "done"
            },
     "S6":  {
                "2-spec":  "done",
                "approved":  true,
-               "4-implement":  "done"
+               "4-implement":  "done",
+               "5-verify":  "done"
            },
     "S7":  {
                "2-spec":  "done",
                "approved":  true,
-               "4-implement":  "done"
+               "4-implement":  "done",
+               "5-verify":  "done"
            },
     "S8":  {
                "2-spec":  "done",
                "approved":  true,
-               "4-implement":  "done"
+               "4-implement":  "done",
+               "5-verify":  "done"
            },
     "S9":  {
                "2-spec":  "done",
                "approved":  true,
-               "4-implement":  "done"
+               "4-implement":  "done",
+               "5-verify":  "done"
            },
     "S10":  {
                 "2-spec":  "done",
                 "approved":  true,
-                "4-implement":  "done"
+                "4-implement":  "done",
+                "5-verify":  "done"
             },
     "common":  {
                    "3-tokens":  "done"
