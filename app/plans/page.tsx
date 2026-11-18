@@ -37,6 +37,8 @@ export default function PlansPage() {
                 badge={false}
                 promo={false}
                 sale={false}
+                buttonSize="sm"
+                buttonVariant="Secondary"
                 buttonLabel="자세히"
               />
             </div>
