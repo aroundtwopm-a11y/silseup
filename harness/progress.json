@@ -1,1 +1,12 @@
-{}
+{
+  "S1": { "2-spec": "done", "approved": false },
+  "S2": { "2-spec": "done", "approved": false },
+  "S3": { "2-spec": "done", "approved": false },
+  "S4": { "2-spec": "done", "approved": false },
+  "S5": { "2-spec": "done", "approved": false },
+  "S6": { "2-spec": "done", "approved": false },
+  "S7": { "2-spec": "done", "approved": false },
+  "S8": { "2-spec": "done", "approved": false },
+  "S9": { "2-spec": "done", "approved": false },
+  "S10": { "2-spec": "done", "approved": false }
+}
