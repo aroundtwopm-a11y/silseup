@@ -1,0 +1,27 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": [".claude/hooks/scope-guard.mjs"],
+            "onFailure": "block",
+            "timeout": 15,
+            "statusMessage": "scope-guard: 보호 경로 확인"
+          },
+          {
+            "type": "command",
+            "command": "node",
+            "args": [".claude/hooks/token-guard.mjs"],
+            "onFailure": "block",
+            "timeout": 15,
+            "statusMessage": "token-guard: 토큰 밖 값 확인"
+          }
+        ]
+      }
+    ]
+  }
+}
