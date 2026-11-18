@@ -1,0 +1,541 @@
+# Design.md
+
+이 문서는 현재 파일의 변수, 로컬 텍스트 스타일, Components 섹션의 컴포넌트 정의를 기준으로 작성했다.
+
+- 단위는 별도 표기가 없으면 px이다.
+- 색상은 semantic 변수의 별칭을 실제 색상으로 해석한 값이다.
+- 토큰은 `컬렉션/변수 이름`으로 표기한다.
+- 디자인 토큰 컬렉션은 모두 `Default` 단일 모드이며, 별도의 다크 모드는 없다.
+- 용도는 실제 컴포넌트 연결과 설명을 우선하며, 별도 정의가 없는 항목은 토큰 역할에 따른 권장 용도로 구분한다.
+
+## 1. 색 팔레트
+
+화면과 컴포넌트에는 primitive 색상보다 semantic 토큰을 우선 적용한다. 같은 색상이라도 배경·텍스트·아이콘·테두리 역할을 구분해 사용한다.
+
+### 텍스트
+
+| Semantic 토큰 | 값 | 연결된 primitive | 쓰는 곳 |
+| --- | --- | --- | --- |
+| semantic/text/primary | #181A1B | gray/900 | 제목, 주요 본문, 입력 완료 값, 기본 정보 값 |
+| semantic/text/secondary | #66707A | gray/600 | 보조 설명, 정보 행의 라벨, 금액 안내 |
+| semantic/text/tertiary | #878787 | gray/500 | 요금제의 할인 전 가격, 낮은 우선순위 정보 |
+| semantic/text/on-dark | #FFFFFF | gray/0 | Primary 버튼, 어두운 Chip, 선택된 FilterChip의 글자 |
+| semantic/text/accent | #FF2E98 | pink/500 | 할인율, 강조 값, 단계 진행 라벨 |
+| semantic/text/error | #E30036 | red/500 | 입력 오류 메시지 |
+| semantic/text/placeholder | #B7BDC4 | gray/400 | 빈 입력 필드의 안내 값 |
+| semantic/text/on-disabled | #66707A | gray/600 | 비활성 입력 필드의 값 |
+
+### 배경·표면
+
+| Semantic 토큰 | 값 | 연결된 primitive | 쓰는 곳 |
+| --- | --- | --- | --- |
+| semantic/bg/surface | #FFFFFF | gray/0 | Header, 카드, OptionItem 기본 상태, BottomCTA |
+| semantic/surface/default | #FFFFFF | gray/0 | Secondary 버튼 기본 배경 |
+| semantic/bg/default | #F7F7F7 | gray/100 | OptionItem 선택 상태; 일반 중립 배경으로 사용 권장 |
+| semantic/bg/subtle | #EFF1F3 | gray/200 | 비활성 Input, benefit Chip, 진행 막대 트랙, Secondary Hover |
+| semantic/bg/inverse | #2D2D2D | gray/800 | 반전된 어두운 표면용으로 정의됨 |
+| semantic/bg/accent-subtle | #FFF5FA | pink/50 | sale Chip, 할인 프로모션 배경 |
+| semantic/bg/error-subtle | #FFF0F3 | red/50 | 오류 안내 배경용으로 정의됨 |
+
+### 테두리·구분선
+
+| Semantic 토큰 | 값 | 연결된 primitive | 쓰는 곳 |
+| --- | --- | --- | --- |
+| semantic/border/default | #D9DCDF | gray/300 | Input 기본선, Secondary 버튼, 카드, 선택지, 필터의 기본 테두리 |
+| semantic/border/subtle | #EFF1F3 | gray/200 | 정보 행 구분선, BottomCTA 경계; Tag 배경에도 연결됨 |
+| semantic/border/medium | #66707A | gray/600 | 선택된 Card/Plan과 OptionItem의 테두리 |
+| semantic/border/strong | #181A1B | gray/900 | 강한 경계 표현용으로 정의됨 |
+| semantic/border/divider | rgba(0, 0, 0, 0.10) | black/10 | 반투명 구분선용으로 정의됨 |
+| semantic/border/focus | #FF2E98 | pink/500 | Input 포커스 상태 |
+| semantic/border/error | #E30036 | red/500 | Input caution 상태 |
+
+### 채움·브랜드
+
+| Semantic 토큰 | 값 | 연결된 primitive | 쓰는 곳 |
+| --- | --- | --- | --- |
+| semantic/fill/primary | #FF2E98 | pink/500 | Primary 버튼 기본 상태, 완료 아이콘, 선택 라디오, 진행 막대 |
+| semantic/fill/primary-hover | #E6007E | pink/600 | Primary 버튼 Hover |
+| semantic/fill/accent | #E6007E | pink/600 | 별도 강조 채움용으로 정의됨; primary와 값이 다름 |
+| semantic/fill/secondary | #181A1B | gray/900 | package Chip, 선택된 FilterChip |
+| semantic/fill/tertiary | #EFF1F3 | gray/200 | 낮은 강조 수준의 채움용으로 정의됨 |
+| semantic/fill/disabled | #D9DCDF | gray/300 | Primary·Secondary 버튼 Disabled |
+| semantic/fill/disabled-strong | #B7BDC4 | gray/400 | 더 강한 비활성 채움용으로 정의됨 |
+| semantic/brand/primary | #FF2E98 | pink/500 | Logo |
+
+### 아이콘·효과
+
+| Semantic 토큰 | 값 | 연결된 primitive | 쓰는 곳 |
+| --- | --- | --- | --- |
+| semantic/icon/default | #66707A | gray/600 | 뒤로가기, 기본 체크 아이콘 |
+| semantic/icon/strong | #181A1B | gray/900 | 강조 아이콘용으로 정의됨 |
+| semantic/icon/primary | #000000 | gray/950 | 검정 아이콘용으로 정의됨 |
+| semantic/icon/accent | #FF2E98 | pink/500 | 혜택 행의 점; sale Chip 글자에도 연결됨 |
+| semantic/icon/on-dark | #FFFFFF | gray/0 | 완료 아이콘의 체크, 선택 라디오의 내부 점 |
+| semantic/icon/disabled | #D9DCDF | gray/300 | 비활성 아이콘용으로 정의됨 |
+| semantic/icon/error | #E30036 | red/500 | Input 오류 아이콘 |
+| semantic/effect/shadow-subtle | rgba(0, 0, 0, 0.05) | 직접 정의 | 미세한 그림자 색상. 오프셋·블러 값까지 정의하는 토큰은 아님 |
+
+색상 적용 시 유의사항:
+
+- `bg/surface`와 `surface/default`는 현재 값이 같지만 서로 다른 토큰이다.
+- `fill/accent`는 `#E6007E`, `text/accent`와 `icon/accent`는 `#FF2E98`이다.
+- 선택된 카드의 외곽선은 분홍색이 아니라 `border/medium`이다.
+- primitive의 `pink/25 = #FFF8F5`는 존재하지만 현재 semantic 별칭에는 연결되어 있지 않다.
+
+## 2. 타이포 스케일
+
+- 기본 글꼴: Noto Sans KR
+- 글꼴 변수: `typography/font-family/family-font`
+- 모든 로컬 텍스트 스타일의 자간: 0%
+- Medium = 500, SemiBold = 600, Bold = 700
+- 아래 크기와 줄높이는 로컬 텍스트 스타일의 실제 정의다.
+
+| 텍스트 스타일 | 크기 / 줄높이 | 굵기 | 쓰는 곳 |
+| --- | --- | --- | --- |
+| heading/h1 | 32 / 44 | Bold 700 | 최상위 대제목 권장 |
+| heading/h2 | 28 / 40 | Bold 700 | 주요 화면 제목 권장 |
+| heading/h3 | 24 / 32 | Bold 700 | 큰 섹션 제목 권장 |
+| heading/h4 | 20 / 28 | Bold 700 | Header root 제목 |
+| subtitle/bold | 18 / 26 | Bold 700 | 요금제 이름·가격·할인율, BottomCTA 금액, 선택된 OptionItem 제목 |
+| subtitle/default | 18 / 26 | SemiBold 600 | Header default의 중앙 제목 |
+| body/strong | 16 / 24 | SemiBold 600 | 기본 버튼 라벨, Input 값, OptionItem 기본 제목 |
+| body/medium | 16 / 24 | Medium 500 | Primary 버튼 Disabled 라벨; 일반 본문 권장 |
+| body/small-strong | 14 / 21 | SemiBold 600 | List/Row 값, 선택된 FilterChip 라벨 |
+| body/small-medium | 14 / 21 | Medium 500 | 카드 설명, 선택지 설명, 정보 행 라벨, 기본 FilterChip 라벨 |
+| caption/medium | 13 / 18 | Medium 500 | 할인 전 가격, 작은 보조 정보 |
+| caption/bold | 13 / 18 | Bold 700 | sale Chip, Tag, StepProgress 라벨 |
+| caption/small | 12 / 16 | Medium 500 | 작은 보조 정보 권장 |
+| caption/small-bold | 12 / 16 | Bold 700 | 작은 강조 정보 권장 |
+| caption/mini | 10 / 14 | SemiBold 600 | benefit·package Chip 라벨 |
+| specimen/weight-medium | 32 / 44 | Medium 500 | 글꼴 굵기 비교용 견본 |
+| specimen/weight-semibold | 32 / 44 | SemiBold 600 | 글꼴 굵기 비교용 견본 |
+
+크기 변수:
+
+| 변수 | 값 |
+| --- | --- |
+| typography/font-size/heading-h1 | 32 |
+| typography/font-size/heading-h2 | 28 |
+| typography/font-size/heading-h3 | 24 |
+| typography/font-size/heading-h4 | 20 |
+| typography/font-size/subtitle | 18 |
+| typography/font-size/body | 16 |
+| typography/font-size/body-small | 14 |
+| typography/font-size/caption | 13 |
+| typography/font-size/12 | 12 |
+| typography/font-size/caption-mini | 10 |
+
+적용 규칙:
+
+- 텍스트는 크기 변수만 조합하기보다 줄높이와 굵기를 포함한 텍스트 스타일을 우선 사용한다.
+- `specimen/*`은 제품 화면용 스케일이 아니라 굵기 비교용이다.
+- OptionItem은 선택 시 제목이 `body/strong`에서 `subtitle/bold`로 바뀐다. 선택 전후 높이가 같다고 가정하지 않는다.
+- Input 기본 상태의 숨겨진 메시지에는 `heading/h4`가 연결되어 있다. 다른 상태의 메시지는 주로 `body/small-medium`이므로 공통 메시지 스타일이 완전히 통일된 상태는 아니다.
+
+## 3. 간격·레이아웃
+
+### 390×844 모바일 기준
+
+| 항목 | 확인된 값 | 적용 기준 |
+| --- | --- | --- |
+| 화면 기준 크기 | 390 × 844 | 세로형 모바일 |
+| Header | 390 × 56 | 화면 상단 전체 너비 |
+| 기본 좌우 여백 | 16 | 공통 컴포넌트 기준 |
+| 기본 콘텐츠 너비 | 358 | 390 − 16 × 2 |
+| 넓은 좌우 여백 | 24 | 일부 소개·상세 화면 본문과 하단 동작 영역 |
+| 넓은 여백 적용 시 너비 | 342 | 390 − 24 × 2 |
+| 본문 상단·하단 패딩 | 16 또는 24 | 화면별 실제 예시에 두 값이 사용됨 |
+| 본문 주요 요소 간격 | 16 또는 24 | 목록·섹션 구성에 따라 구분 |
+| BottomCTA 하단 여백 | 32 | 컴포넌트 설명상 홈 인디케이터 공간 |
+| BottomCTA single·double 높이 | 97 | 현재 컴포넌트 외곽 실측 |
+| BottomCTA price 높이 | 139 | 현재 컴포넌트 외곽 실측 |
+
+레이아웃 규칙:
+
+- 화면은 상단 Header, 세로 본문, 필요한 경우 하단 동작 영역으로 구성한다.
+- Header와 BottomCTA는 화면 전체 너비를 사용한다.
+- 본문 안의 카드·입력·선택지는 부모의 좌우 패딩을 제외한 너비에 맞춘다.
+- 16px 여백과 24px 여백은 모두 실제 사용되므로 모든 화면을 한 값으로 단정하지 않는다.
+- 콘텐츠가 길어지는 화면은 세로 스크롤을 전제로 구성하는 것을 권장한다.
+- 하단 동작을 고정할 때는 마지막 본문 내용이 가려지지 않도록 해당 영역 높이만큼 공간을 확보한다.
+- 실제 예시에는 버튼 2개를 세로로 쌓은 별도 하단 영역도 있다. 이는 BottomCTA의 가로형 `Layout=double`과 다르다.
+- 별도의 상태 표시줄 높이나 추가 반응형 브레이크포인트는 확인된 정의에 포함되지 않는다.
+
+### 간격 토큰
+
+컬렉션 이름은 `spacing`, 변수 이름은 `spacing/N`이다.
+따라서 전체 표기는 `spacing/spacing/N`이다.
+
+등록 값:
+
+`0, 2, 4, 6, 8, 10, 12, 16, 20, 24, 28, 32, 40, 48, 56, 60, 64, 80`
+
+| 값 | 확인된 사용 예 또는 권장 역할 |
+| --- | --- |
+| 0 | 불필요한 내부 간격 제거 |
+| 2, 4, 6 | 작은 내부 여백, 미세한 간격 |
+| 8 | 카드 내부 간격, 버튼 사이 간격, 진행 라벨과 트랙 사이 |
+| 10 | sale Chip 좌우 패딩 |
+| 12 | Input과 메시지 사이, OptionItem 내부 간격, 정보 행 간격 |
+| 16 | 기본 화면 좌우 여백, 본문 패딩 |
+| 20 | Card/Plan 패딩, OptionItem 좌우 패딩 |
+| 24 | 넓은 화면 여백, 주요 섹션 간격, 버튼 좌우 패딩 |
+| 32 | BottomCTA 하단 여백 |
+| 28, 40, 48, 56, 60, 64, 80 | 추가 공간 스케일. 이름만으로 특정 레이아웃 용도가 고정되지는 않음 |
+
+### 모서리 토큰
+
+컬렉션 이름은 `radius`, 변수 이름은 `radius/N`이다.
+
+| 변수 이름 | 값 |
+| --- | --- |
+| radius/0 | 0 |
+| radius/2 | 2 |
+| radius/4 | 4 |
+| radius/5 | 5 |
+| radius/6 | 6 |
+| radius/8 | 8 |
+| radius/10 | 10 |
+| radius/12 | 12 |
+| radius/16 | 16 |
+| radius/20 | 20 |
+| radius/24 | 24 |
+| radius/32 | 32 |
+| radius/40 | 40 |
+| radius/999 | 999 |
+| radius/full | 9999 |
+
+주요 적용:
+
+- Button: 8
+- benefit·package Chip: 4
+- sale Chip: 6
+- OptionItem: 12
+- Card/Plan: 16
+- Tag: 999
+- FilterChip, 완료 아이콘: 9999
+- Header와 Input 필드: 0
+
+## 4. 컴포넌트 용법
+
+대상은 Components 섹션 내부의 12개 컴포넌트 세트와 5개 단독 컴포넌트다. 다른 위치의 동명 컴포넌트는 포함하지 않는다.
+
+속성 이름 뒤의 Figma 내부 식별 접미사는 생략했다. 대소문자는 실제 정의를 유지한다.
+
+### Button
+
+변형:
+
+| 속성 | 값 | 기본값 |
+| --- | --- | --- |
+| Type | Primary, Secondary | Primary |
+| Size | sm, lg, xl | xl |
+| State | Default, Hover, Disabled | Default |
+| Label | 텍스트 | 로그인 |
+
+총 18개 조합이 정의되어 있다.
+
+크기:
+
+| Size | 높이 | 좌우 패딩 | 상하 패딩 |
+| --- | --- | --- | --- |
+| sm | 주로 40 | 24 | 8 |
+| lg | 48 | 24 | 12 |
+| xl | 52 | 24 | 16 |
+
+- Secondary의 sm Default·Hover는 실제 외곽 높이가 42이며 Disabled는 40이다.
+- xl은 실제 높이 52를 기준으로 한다. 패딩과 글자 줄높이의 단순 합으로 높이를 다시 계산하지 않는다.
+- 반경은 8이다.
+- 기본 라벨은 `body/strong`이다.
+- Primary Disabled 라벨은 `body/medium`이다.
+
+상태 표현:
+
+| 변형 | 배경 | 글자 | 테두리 |
+| --- | --- | --- | --- |
+| Primary / Default | fill/primary | text/on-dark | 없음 |
+| Primary / Hover | fill/primary-hover | text/on-dark | 없음 |
+| Secondary / Default | surface/default | text/primary | border/default |
+| Secondary / Hover | bg/subtle | text/primary | border/default |
+| Disabled | fill/disabled | text/on-dark | 없음 |
+
+사용 규칙:
+
+- 주요 진행 동작은 Primary, 보조 동작은 Secondary를 권장한다.
+- 하단 주요 동작에는 xl을 사용한다.
+- 라벨은 Label 속성으로 바꾼다.
+- Disabled 변형은 시각 상태다. 실제 동작 차단은 별도로 연결해야 한다.
+
+### Input
+
+| 속성 | 값 | 기본값 |
+| --- | --- | --- |
+| State | default, focus, filled, caution, disabled | default |
+| errorMessage | Boolean | false |
+
+- 기본 필드 크기: 358 × 58
+- caution 전체 높이: 91
+- 필드와 메시지 사이 간격: 12
+- 모서리: 0
+- 박스형 테두리보다 하단 선 중심의 입력 표현이다.
+- 입력 값과 메시지를 바꾸는 별도 TEXT 속성은 없다. 내부 텍스트를 오버라이드한다.
+
+상태 규칙:
+
+- default: placeholder 색상과 기본 입력선
+- focus: `border/focus`
+- filled: 입력 값을 `text/primary`로 표시
+- caution: `border/error`, 오류 아이콘, `text/error` 메시지
+- disabled: `bg/subtle`, `text/on-disabled`
+
+주의:
+
+- 일반 상태의 메시지 표시 여부는 errorMessage에 연결되어 있다.
+- caution의 메시지는 표시된 상태이며 errorMessage 속성에 직접 연결되어 있지 않다.
+- 따라서 errorMessage만으로 모든 상태의 메시지 표시를 일괄 제어할 수 있다고 가정하지 않는다.
+
+### Checkbox
+
+| 속성 | 값 | 기본값 |
+| --- | --- | --- |
+| State | default, active | default |
+
+- 외곽 크기: 24 × 24
+- 내부 주요 도형 크기: 20 × 20
+- 선택 여부는 State로 표현한다.
+- 별도 라벨 속성이나 Disabled 변형은 없다.
+- 동의 항목에 사용할 때는 설명 텍스트와 함께 배치하는 것을 권장한다.
+- 실제 체크 전환 동작은 별도로 연결한다.
+
+### Chip
+
+| 속성 | 값 | 기본값 |
+| --- | --- | --- |
+| Type | benefit, package, sale | sale |
+
+| Type | 높이 | 반경 | 배경 | 텍스트 스타일 |
+| --- | --- | --- | --- | --- |
+| benefit | 20 | 4 | bg/subtle | caption/mini |
+| package | 20 | 4 | fill/secondary | caption/mini |
+| sale | 24 | 6 | bg/accent-subtle | caption/bold |
+
+- benefit: 혜택 정보 표시
+- package: 패키지 정보 표시
+- sale: 할인·절약 정보 표시
+- 별도 선택 상태나 Label 속성이 없다.
+- 문구는 내부 label을 오버라이드한다.
+- 조건을 선택하는 동작에는 FilterChip을 사용한다.
+
+### Tag
+
+- 단독 컴포넌트
+- 기본 크기: 48 × 26
+- 기본 내용: 추천
+- 반경: 999
+- 패딩: 상하 4, 좌우 12
+- 텍스트 스타일: `caption/bold`
+- 배경: `border/subtle`
+- 글자: `text/secondary`
+- 변형과 공개 속성은 없다.
+
+추천 같은 짧은 상태·분류 표시에 사용한다. 선택 컨트롤로 사용하지 않는다.
+
+### Header
+
+| 속성 | 값 | 기본값 |
+| --- | --- | --- |
+| Type | default, root | default |
+| Title | 텍스트 | 맞춤 요금제 추천 |
+
+- 공통 크기: 390 × 56
+- 좌우 패딩: 16
+- 배경: `bg/surface`
+
+변형별 규칙:
+
+- default: 왼쪽 뒤로가기, 중앙 제목, 오른쪽 균형용 공간
+- default 제목: `subtitle/default`
+- root: 뒤로가기 없이 왼쪽 큰 제목과 오른쪽 Logo
+- root 제목: `heading/h4`
+- 뒤로가기 아이콘: 24 × 24
+- 제목은 Title 속성으로 변경한다.
+- 뒤로가기 동작은 화면 흐름에 맞게 별도로 연결한다.
+
+### List/Row
+
+| 속성 | 값 | 기본값 |
+| --- | --- | --- |
+| Type | default, check | default |
+| Label | 텍스트 | 데이터 |
+| Value | 텍스트 | 무제한 |
+
+- 기본 크기: 358 × 46
+- 상하 패딩: 12
+- 좌우 패딩: 4
+- 내부 간격: 12
+- 구분선: `border/subtle`
+
+사용 규칙:
+
+- default: 왼쪽 정보 라벨과 오른쪽 값
+- check: 혜택 목록용 강조 행
+- check의 선행 표시는 체크 모양이 아니라 6 × 6 원형 점이다.
+- 기본 라벨은 `body/small-medium`, 값은 `body/small-strong`이다.
+- check 값은 `text/accent`로 강조된다.
+
+### BottomCTA
+
+| 속성 | 값 | 기본값 |
+| --- | --- | --- |
+| Layout | single, double, price | single |
+| Amount | 텍스트 | 월 85,000원 |
+| AmountLabel | 텍스트 | 월 납부 금액 |
+
+| Layout | 실제 크기 | 구성 |
+| --- | --- | --- |
+| single | 390 × 97 | 전체 너비 Primary 버튼 1개 |
+| double | 390 × 97 | 가로형 Secondary + Primary |
+| price | 390 × 139 | 금액 안내 행 + Primary 버튼 |
+
+사용 규칙:
+
+- single·double: 패딩 상단 12, 좌우 16, 하단 32
+- price: 패딩 상단 16, 좌우 16, 하단 32
+- double 버튼 사이 간격: 8
+- price 금액 행과 버튼 사이 간격: 12
+- 버튼 높이: 52
+- single·price 버튼 너비: 358
+- 금액 정보는 price에서 사용한다.
+- 버튼 라벨과 상태는 내부 Button 인스턴스의 속성으로 변경한다.
+- 구매·신청처럼 금액 확인이 필요한 결정 화면에는 price를 권장한다.
+- 하단 고정 용도로 설명되어 있지만 실제 고정 배치와 동작은 화면에서 별도로 설정한다.
+
+### Card/Plan
+
+| 속성 | 유형·값 | 기본값 |
+| --- | --- | --- |
+| State | default, selected | default |
+| Name | 텍스트 | 넉넉 무제한 |
+| Desc | 텍스트 | 데이터 무제한 · 통화 무제한 · 넷플릭스 포함 |
+| Discount | 텍스트 | 15% |
+| Price | 텍스트 | 월 85,000원 |
+| Original | 텍스트 | 월 100,000원 |
+| Badge | Boolean | true |
+| Promo | Boolean | true |
+| Sale | Boolean | true |
+
+외형:
+
+- 너비: 358
+- 기본 높이: default 223, selected 224
+- 패딩: 20
+- 내부 간격: 8
+- 반경: 16
+- 기본 배경: `bg/surface`
+- 기본 테두리: `border/default`, 1
+- 선택 테두리: `border/medium`, 1.5
+
+사용 규칙:
+
+- Name·Desc·Price는 요금제 기본 정보다.
+- Sale은 할인율과 정가 표시를 제어한다.
+- Promo는 프로모션 Chip 표시를 제어한다.
+- 선택 상태의 내부 버튼 기본 라벨은 선택됨이다.
+- 이름·가격·할인율에는 `subtitle/bold`, 설명에는 `body/small-medium`, 정가에는 `caption/medium`이 적용된다.
+- 버튼은 내부 Button 속성으로 설정한다.
+
+현재 정의의 주의사항:
+
+- 설명에는 Sale·Promo·Badge를 끄면 기본형 카드가 된다고 적혀 있다.
+- 실제 Badge 속성은 배지의 표시 여부에 연결되어 있지 않다.
+- 따라서 Badge=false만으로 배지가 숨겨진다고 가정하지 않는다.
+- 선택된 카드의 외곽선은 분홍색이 아니라 회색 계열이다.
+
+### OptionItem
+
+| 속성 | 값 | 기본값 |
+| --- | --- | --- |
+| State | default, selected | default |
+| Title | 텍스트 | 데이터를 많이 써요 |
+| Desc | 텍스트 | 영상·게임을 자주 봐서 무제한이 필요해요 |
+
+- 너비: 358
+- 높이: default 83, selected 86
+- 패딩: 상하 16, 좌우 20
+- 텍스트와 라디오 사이 간격: 12
+- 반경: 12
+- 라디오 크기: 22 × 22
+
+사용 규칙:
+
+- 질문형 추천 등 한 항목을 고르는 단일 선택에 사용한다.
+- 같은 선택 그룹에서는 selected를 한 번에 1개만 유지한다.
+- default: 흰 배경, 기본 테두리
+- selected: `bg/default` 배경, `border/medium` 1.5 테두리, 분홍색 라디오
+- 선택 시 제목 스타일과 실제 높이가 바뀐다.
+- 다중 선택 상태나 Disabled 변형은 정의되어 있지 않다.
+
+### StepProgress
+
+| 속성 | 값 | 기본값 |
+| --- | --- | --- |
+| Step | 1, 2, 3 | 1 |
+
+- 전체 크기: 358 × 30
+- 라벨: `caption/bold`
+- 라벨과 트랙 사이 간격: 8
+- 트랙 높이: 4
+- 트랙: `bg/subtle`
+- 진행 막대: `fill/primary`
+- 라벨: `text/accent`
+
+사용 규칙:
+
+- 여러 단계로 나뉜 질문·입력 흐름에 사용한다.
+- 현재 정의는 총 3단계 기준이다.
+- 단계 변경은 Step 변형으로 표현한다.
+- 임의의 진행률을 입력하는 별도 숫자 속성은 없다.
+
+### FilterChip
+
+| 속성 | 값 | 기본값 |
+| --- | --- | --- |
+| State | default, selected | default |
+| Label | 텍스트 | 데이터 많이 |
+
+- 높이: 40
+- 패딩: 상하 8, 좌우 16
+- 반경: 9999
+- 너비는 라벨에 따라 달라진다.
+
+사용 규칙:
+
+- 조건·정렬 선택에 사용한다.
+- 같은 그룹에서는 selected를 한 번에 1개만 유지한다.
+- default: `bg/surface`, `border/default`, `body/small-medium`
+- selected: `fill/secondary`, `text/on-dark`, `body/small-strong`
+- 선택 상태는 회색조로 표현한다.
+- 할인·혜택을 알리는 비선택형 정보에는 Chip을 사용한다.
+
+### 아이콘·로고
+
+| 컴포넌트 | 크기 | 사용 |
+| --- | --- | --- |
+| icon/arrowLeft | 24 × 24 | Header 뒤로가기 |
+| icon/check | 24 × 24 | 일반 체크 표시 |
+| icon/doneMark | 64 × 64 | 완료 화면의 주요 상태 표시 |
+| Logo | 32 × 24 | Header root의 브랜드 표시 |
+
+- 네 컴포넌트 모두 별도 변형이나 공개 속성이 없다.
+- arrowLeft·check는 `icon/default`를 사용한다.
+- doneMark는 `fill/primary` 배경과 `icon/on-dark` 체크를 사용한다.
+- Logo는 `brand/primary`를 사용한다.
+
+### 공통 적용 규칙
+
+- 메인 정의를 화면마다 복제해 수정하기보다 인스턴스를 사용한다.
+- 공개된 텍스트·Boolean·변형 속성을 우선 사용한다.
+- 공개 속성이 없는 문구는 인스턴스 내부 텍스트 오버라이드로 변경한다.
+- State·Step 같은 변형은 시각 상태 정의이며 실제 선택 전환·검증·탐색 동작을 자동으로 보장하지 않는다.
+- 선택 상태와 표시되는 데이터가 서로 일치하도록 화면에서 상태를 관리한다.
+- `요금제 신청 · 프로토타입 상태` 컬렉션의 plan/*, option/* 문자열 변수는 화면 데이터와 선택 상태용이며 색상·타이포·간격 토큰과 구분한다.
