@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "./Button";
+import { Button, type ButtonSize, type ButtonVariant } from "./Button";
 import { Chip } from "./Chip";
 import { Tag } from "./Tag";
 
@@ -27,6 +27,10 @@ export type CardPlanProps = {
   promoLabel?: string;
   /** 내부 Button Label. 지정하지 않으면 selected는 "선택됨" */
   buttonLabel?: string;
+  /** 내부 Button Size (design.md: 버튼은 내부 Button 속성으로 설정). 기본 "lg" */
+  buttonSize?: ButtonSize;
+  /** 내부 Button Type. 지정하지 않으면 selected는 Primary, default는 Secondary */
+  buttonVariant?: ButtonVariant;
   onClick?: () => void;
   className?: string;
 };
@@ -43,6 +47,8 @@ export function CardPlan({
   sale = true,
   promoLabel,
   buttonLabel,
+  buttonSize = "lg",
+  buttonVariant,
   onClick,
   className,
 }: CardPlanProps) {
@@ -73,8 +79,8 @@ export function CardPlan({
         {sale ? <span className="text-caption leading-18 font-medium text-text-tertiary line-through">{original}</span> : null}
       </div>
       <Button
-        variant={selected ? "Primary" : "Secondary"}
-        size="lg"
+        variant={buttonVariant ?? (selected ? "Primary" : "Secondary")}
+        size={buttonSize}
         label={buttonLabel ?? (selected ? "선택됨" : "선택하기")}
         onClick={onClick}
         className="w-full"
