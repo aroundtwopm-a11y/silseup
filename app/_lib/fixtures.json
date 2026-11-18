@@ -9,5 +9,11 @@
     { "id": "10gb", "name": "데이터 10GB", "price": 20000, "data": "10GB", "call": "무제한", "sms": "무제한" },
     { "id": "20gb", "name": "데이터 20GB", "price": 28000, "data": "20GB", "call": "무제한", "sms": "무제한" }
   ],
-  "contractOptions": ["12개월", "24개월"]
+  "contractOptions": ["12개월", "24개월"],
+  "applications": [
+    { "id": "app-1", "planId": "10gb", "status": "접수", "receivedAt": "2000.01.01" },
+    { "id": "app-2", "planId": "20gb", "status": "처리 중", "receivedAt": "2000.01.01" },
+    { "id": "app-3", "planId": "5gb", "status": "완료", "receivedAt": "2000.01.01" },
+    { "id": "app-4", "planId": "10gb", "status": "취소", "receivedAt": "2000.01.01" }
+  ]
 }

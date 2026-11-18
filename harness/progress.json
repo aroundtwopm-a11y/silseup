@@ -46,7 +46,8 @@
            },
     "S10":  {
                 "2-spec":  "done",
-                "approved":  true
+                "approved":  true,
+                "4-implement":  "done"
             },
     "common":  {
                    "3-tokens":  "done"
