@@ -53,7 +53,7 @@ export function CardPlan({
       aria-current={selected ? "true" : undefined}
       className={[
         "flex w-full flex-col gap-8 rounded-16 bg-bg-surface p-20",
-        selected ? "border-1.5 border-border-medium" : "border border-border-default",
+        selected ? "border-selected border-border-medium" : "border border-border-default",
         className ?? "",
       ].join(" ")}
     >

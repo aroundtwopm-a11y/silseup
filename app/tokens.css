@@ -78,3 +78,9 @@
   --text-caption-mini: 10px;
   --text-12: 12px;
 }
+
+/* 선택 테두리 두께: docs/design.md.txt 4장 Card/Plan·OptionItem selected 1.5 */
+@utility border-selected {
+  border-style: var(--tw-border-style);
+  border-width: 1.5px;
+}

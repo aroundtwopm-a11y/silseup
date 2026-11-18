@@ -30,7 +30,7 @@ export function OptionItem({
       onClick={onClick}
       className={[
         "flex w-full items-center justify-between gap-12 rounded-12 px-20 py-16 text-left",
-        selected ? "bg-bg-default border-1.5 border-border-medium" : "bg-bg-surface border border-border-default",
+        selected ? "bg-bg-default border-selected border-border-medium" : "bg-bg-surface border border-border-default",
         className ?? "",
       ].join(" ")}
     >
