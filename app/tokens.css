@@ -1,0 +1,80 @@
+/* 자동 생성 파일. 손으로 고치지 않는다.
+ * 원본: docs/token.json.txt  생성: npm run tokens */
+
+@theme {
+  --color-*: initial;
+  --radius-*: initial;
+  --text-*: initial;
+  --shadow-*: initial;
+  --spacing: 1px;
+
+  /* 색: semantic 토큰만 */
+  --color-fill-accent: #E6007E;
+  --color-text-accent: #FF2E98;
+  --color-icon-accent: #FF2E98;
+  --color-text-primary: #181A1B;
+  --color-text-secondary: #66707A;
+  --color-text-tertiary: #878787;
+  --color-text-on-dark: #FFFFFF;
+  --color-text-error: #E30036;
+  --color-text-placeholder: #B7BDC4;
+  --color-text-on-disabled: #66707A;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-default: #F7F7F7;
+  --color-bg-subtle: #EFF1F3;
+  --color-bg-inverse: #2D2D2D;
+  --color-bg-accent-subtle: #FFF5FA;
+  --color-bg-error-subtle: #FFF0F3;
+  --color-border-default: #D9DCDF;
+  --color-border-subtle: #EFF1F3;
+  --color-border-strong: #181A1B;
+  --color-border-divider: #0000001A;
+  --color-border-focus: #FF2E98;
+  --color-border-error: #E30036;
+  --color-fill-primary: #FF2E98;
+  --color-fill-secondary: #181A1B;
+  --color-fill-tertiary: #EFF1F3;
+  --color-fill-disabled: #D9DCDF;
+  --color-fill-disabled-strong: #B7BDC4;
+  --color-fill-primary-hover: #E6007E;
+  --color-icon-default: #66707A;
+  --color-icon-strong: #181A1B;
+  --color-border-medium: #66707A;
+  --color-surface-default: #FFFFFF;
+  --color-icon-on-dark: #FFFFFF;
+  --color-icon-disabled: #D9DCDF;
+  --color-icon-error: #E30036;
+  --color-icon-primary: #000000;
+  --color-brand-primary: #FF2E98;
+  --color-effect-shadow-subtle: #0000000D;
+
+  /* 모서리 */
+  --radius-4: 4px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-20: 20px;
+  --radius-24: 24px;
+  --radius-32: 32px;
+  --radius-full: 9999px;
+  --radius-2: 2px;
+  --radius-0: 0px;
+  --radius-5: 5px;
+  --radius-6: 6px;
+  --radius-999: 999px;
+  --radius-10: 10px;
+  --radius-40: 40px;
+
+  /* 글꼴과 글자 크기 */
+  --font-sans: "Noto Sans KR", sans-serif;
+  --text-heading-h1: 32px;
+  --text-heading-h2: 28px;
+  --text-heading-h3: 24px;
+  --text-heading-h4: 20px;
+  --text-subtitle: 18px;
+  --text-body: 16px;
+  --text-body-small: 14px;
+  --text-caption: 13px;
+  --text-caption-mini: 10px;
+  --text-12: 12px;
+}
