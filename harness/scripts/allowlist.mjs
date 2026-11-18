@@ -22,8 +22,10 @@ export const DESIGN_SIZES = [
   844, 390, 358, 342, 326, 318, 224, 223, 176, 174, 139, 114, 97, 91, 86, 83, 64, 58, 56, 52, 48,
   42, 40, 32, 30, 26, 24, 22, 20, 6, 4,
 ];
-// 테두리 두께: Card/Plan·OptionItem 선택 1.5, 기본 1(=border)
-export const DESIGN_BORDER_WIDTHS = ["0", "1.5"];
+// 테두리 두께: 기본 1(=border), 0(=border-0), Card/Plan·OptionItem 선택 1.5(=border-selected)
+// Tailwind v4는 border-1.5를 만들지 않는다. 1.5px은 tokens.mjs가 @utility border-selected로 만든다.
+export const DESIGN_BORDER_SELECTED_PX = 1.5;
+export const DESIGN_BORDER_WIDTHS = ["0", "selected"];
 
 export function buildAllowlist(tokens = loadTokens()) {
   const spacing = new Set(Object.values(tokens.spacing).map((v) => String(v.value)));

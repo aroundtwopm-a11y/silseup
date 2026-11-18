@@ -4,7 +4,7 @@
 // - 사용: npm run tokens  (옵션: --out <경로>)
 import fs from "node:fs";
 import path from "node:path";
-import { ROOT, loadTokens } from "./allowlist.mjs";
+import { ROOT, loadTokens, DESIGN_BORDER_SELECTED_PX } from "./allowlist.mjs";
 
 const args = process.argv.slice(2);
 const outIdx = args.indexOf("--out");
@@ -38,6 +38,12 @@ for (const [name, v] of Object.entries(t.typography)) {
   if (name.startsWith("font-family/")) lines.push(`  --font-sans: "${v.value}", sans-serif;`);
   else if (name.startsWith("font-size/")) lines.push(`  --text-${name.slice("font-size/".length)}: ${v.value}px;`);
 }
+lines.push("}");
+lines.push("");
+lines.push("/* 선택 테두리 두께: docs/design.md.txt 4장 Card/Plan·OptionItem selected 1.5 */");
+lines.push("@utility border-selected {");
+lines.push("  border-style: var(--tw-border-style);");
+lines.push(`  border-width: ${DESIGN_BORDER_SELECTED_PX}px;`);
 lines.push("}");
 lines.push("");
 

@@ -53,7 +53,7 @@ tools: Read, Glob, Grep, Write, Edit, Bash
 | 글자 크기 | `text-<font-size 토큰 이름>` | `text-body`, `text-subtitle`, `text-caption` |
 | 줄높이 | `leading-<design.md 줄높이>` | `leading-24`, `leading-21` |
 | 굵기 | `font-medium` · `font-semibold` · `font-bold` | |
-| 테두리 두께 | `border` (1) · `border-1.5` · `border-0` | |
+| 테두리 두께 | `border` (1) · `border-selected` (1.5) · `border-0` | `border-1.5`는 Tailwind v4가 만들지 않으므로 쓰지 않는다 |
 
 - 금지: `#hex`, `rgb()`, `hsl()`, `p-[13px]` 같은 대괄호 임의 값, `bg-white`·`text-gray-500` 같은 기본 팔레트, `style={{ padding: 12 }}`, `rounded`·`shadow`처럼 값 없는 모서리·그림자. 훅이 쓰기 전에 거부한다.
 - 텍스트 스타일은 크기 + 줄높이 + 굵기로 조합한다. 예: body/strong = `text-body leading-24 font-semibold`.
