@@ -9,7 +9,7 @@ import { BottomCTA, Header, ListRow } from "@/components/ui";
 import { useCustomer, useDraft } from "@/app/_lib/session";
 import { nextRoute, prevRoute } from "@/app/_lib/nav";
 import { won } from "@/app/_lib/format";
-import { formValue, selectedPlan } from "@/app/_lib/form";
+import { draftMonthlyPrice, formValue, selectedPlan } from "@/app/_lib/form";
 
 export default function ReviewPage() {
   const router = useRouter();
@@ -63,7 +63,7 @@ export default function ReviewPage() {
         {isPort
           ? section("결제 정보", [
               { label: "납부 수단", value: `${formValue(draft, "payMethod")} · 끝 ${cardNumber.slice(-4)}` },
-              { label: "월 납부 금액", value: plan ? won(plan.price) : "" },
+              { label: "월 납부 금액", value: plan ? won(draftMonthlyPrice(draft, plan.price)) : "" },
             ])
           : null}
 
