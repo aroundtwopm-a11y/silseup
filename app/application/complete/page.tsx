@@ -5,7 +5,7 @@
 import { DoneMark, Header, ListRow } from "@/components/ui";
 import { useCustomer, useDraft } from "@/app/_lib/session";
 import { won } from "@/app/_lib/format";
-import { formValue, selectedPlan } from "@/app/_lib/form";
+import { draftMonthlyPrice, formValue, selectedPlan } from "@/app/_lib/form";
 
 export default function CompletePage() {
   const customer = useCustomer();
@@ -20,7 +20,7 @@ export default function CompletePage() {
     { label: "약정 기간", value: formValue(draft, "contract") },
     { label: "결합할인 여부", value: formValue(draft, "bundle") },
     ...(isPort ? [{ label: "유심 유형", value: formValue(draft, "sim") }] : []),
-    { label: "월 납부 금액", value: plan ? won(plan.price) : "" },
+    { label: "월 납부 금액", value: plan ? won(draftMonthlyPrice(draft, plan.price)) : "" },
   ];
 
   return (
