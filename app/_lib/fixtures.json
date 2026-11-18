@@ -1,0 +1,13 @@
+{
+  "customers": {
+    "existingRemaining": { "type": "existing", "contractRemaining": true, "penalty": 50000 },
+    "existingEnded": { "type": "existing", "contractRemaining": false },
+    "port": { "type": "port" }
+  },
+  "plans": [
+    { "id": "5gb", "name": "데이터 5GB", "price": 15000, "data": "5GB", "call": "100분", "sms": "100건" },
+    { "id": "10gb", "name": "데이터 10GB", "price": 20000, "data": "10GB", "call": "무제한", "sms": "무제한" },
+    { "id": "20gb", "name": "데이터 20GB", "price": 28000, "data": "20GB", "call": "무제한", "sms": "무제한" }
+  ],
+  "contractOptions": ["12개월", "24개월"]
+}
