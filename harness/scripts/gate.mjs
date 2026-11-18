@@ -14,7 +14,10 @@ import { renderTests, testGate, g11Build, g12Scope } from "./checks/process.mjs"
 const args = process.argv.slice(2);
 const stageIdx = args.indexOf("--stage");
 const stage = stageIdx >= 0 ? Number(args[stageIdx + 1]) : null;
-const screens = args.filter((a, i) => /^S\d+$/i.test(a) && i !== stageIdx + 1).map((s) => s.toUpperCase());
+// --stage 뒤의 값만 건너뛴다. --stage가 없으면(stageIdx = -1) 아무 인자도 건너뛰지 않는다.
+const screens = [...new Set(
+  args.filter((a, i) => /^S\d+$/i.test(a) && !(stageIdx >= 0 && i === stageIdx + 1)).map((s) => s.toUpperCase()),
+)];
 const unknown = screens.filter((s) => !ALL_SCREENS.includes(s));
 if (unknown.length) {
   console.error(`알 수 없는 화면: ${unknown.join(", ")} (S1~S10)`);
