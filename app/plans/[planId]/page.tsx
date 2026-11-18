@@ -8,6 +8,7 @@ import { BottomCTA, Header, ListRow } from "@/components/ui";
 import { useCustomer, useDraft } from "@/app/_lib/session";
 import { nextRoute, prevRoute } from "@/app/_lib/nav";
 import { monthlyWon } from "@/app/_lib/format";
+import { monthlyPrice } from "@/app/_lib/form";
 import fixtures from "@/app/_lib/fixtures.json";
 
 // Cache Components: useParams()는 <Suspense> 안에서 읽어야 정적 셸을 만들 수 있다.
@@ -60,7 +61,7 @@ function PlanDetail() {
           </section>
 
           <section className="flex flex-col gap-4 rounded-12 bg-bg-accent-subtle p-16">
-            <p className="text-body leading-24 font-semibold text-text-primary">결합할인을 받으면 월 18,000원</p>
+            <p className="text-body leading-24 font-semibold text-text-primary">{`결합할인을 받으면 ${monthlyWon(monthlyPrice(plan.price, true))}`}</p>
             <p className="text-caption leading-18 font-medium text-text-tertiary">금액은 예시입니다.</p>
           </section>
 

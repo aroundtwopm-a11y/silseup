@@ -31,3 +31,16 @@ export function formValue(draft: Record<string, unknown>, key: FormKey): string 
 export function selectedPlan(draft: Record<string, unknown>) {
   return fixtures.plans.find((p) => p.id === draft.planId);
 }
+
+/** 결합할인 금액(원). 결정 D-S4-02. 금액은 예시값. S4·S7·S8·S9가 같이 쓴다. */
+export const BUNDLE_DISCOUNT = 2000;
+
+/** 월 납부 금액(원). 결합할인을 받으면 (월 요금 − BUNDLE_DISCOUNT), 아니면 월 요금. */
+export function monthlyPrice(price: number, bundle: boolean): number {
+  return bundle ? price - BUNDLE_DISCOUNT : price;
+}
+
+/** draft의 결합할인 선택('예'/'아니오')을 반영한 월 납부 금액 */
+export function draftMonthlyPrice(draft: Record<string, unknown>, price: number): number {
+  return monthlyPrice(price, formValue(draft, "bundle") === BUNDLE_OPTIONS[0]);
+}
