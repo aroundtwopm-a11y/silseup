@@ -7,7 +7,7 @@ import { BottomCTA, Header, Input, ListRow, StepProgress } from "@/components/ui
 import { useCustomer, useDraft } from "@/app/_lib/session";
 import { nextRoute, prevRoute } from "@/app/_lib/nav";
 import { won } from "@/app/_lib/format";
-import { formValue, selectedPlan, type FormKey } from "@/app/_lib/form";
+import { draftMonthlyPrice, formValue, selectedPlan, type FormKey } from "@/app/_lib/form";
 
 const STEPS = ["1 개인 정보", "2 요금제 옵션", "3 결제 정보"];
 
@@ -67,7 +67,7 @@ export default function PaymentPage() {
 
         {plan ? (
           <div className="flex flex-col">
-            <ListRow type="default" label="월 납부 금액" value={won(plan.price)} />
+            <ListRow type="default" label="월 납부 금액" value={won(draftMonthlyPrice(draft, plan.price))} />
           </div>
         ) : null}
 
